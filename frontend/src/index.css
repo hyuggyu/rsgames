@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+    --font-sans: "Alexandria", system-ui, sans-serif;
+    --color-ink-950: #0c0a07;
+    --color-ink-900: #14110b;
+    --color-ink-800: #1d1910;
+    --color-ink-700: #2b2517;
+    --color-gold-300: #f5d27a;
+    --color-gold-400: #e8b947;
+    --color-gold-500: #d4a22a;
+    --color-gold-600: #b08420;
+    --color-sand: #f4ecd8;
+    --color-mute: #a89f88;
+}
+
+html { color-scheme: dark; }
+body {
+    background: var(--color-ink-950) radial-gradient(ellipse 80% 40% at 50% 0%, rgba(212,162,42,.16), transparent 70%) no-repeat;
+    color: var(--color-sand);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+}
+html, body, #root { min-height: 100%; }
+body, .theme-toggle { transition: background-color .22s ease, color .22s ease, border-color .22s ease; }
+
+html[data-theme="light"] {
+    color-scheme: light;
+    --color-ink-950: #f8f5ed;
+    --color-ink-900: #fffdf8;
+    --color-ink-800: #f2ecde;
+    --color-ink-700: #ded2ba;
+    --color-gold-300: #a8730b;
+    --color-gold-400: #b77d0d;
+    --color-gold-500: #d4a22a;
+    --color-gold-600: #9a6810;
+    --color-sand: #211a0e;
+    --color-mute: #6d6453;
+}
+html[data-theme="light"] body {
+    background: #f8f5ed radial-gradient(ellipse 85% 42% at 50% 0%, rgba(212,162,42,.18), transparent 72%) no-repeat;
+    color: #211a0e;
+}
+html[data-theme="light"] .text-ink-950 { color: #171106; }
+html[data-theme="light"] .shadow-black\/20,
+html[data-theme="light"] .shadow-black\/30,
+html[data-theme="light"] .shadow-black\/40 { --tw-shadow-color: rgba(88, 66, 20, .14); }
+html[data-theme="light"] input,
+html[data-theme="light"] textarea,
+html[data-theme="light"] select { color: #211a0e; }
+html[data-theme="light"] input::placeholder,
+html[data-theme="light"] textarea::placeholder { color: #8d826e; }
+html[data-theme="light"] .theme-toggle { box-shadow: 0 8px 24px rgba(98, 72, 18, .16); }
+button, a { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--color-gold-400); outline-offset: 2px; }
+.scroll-hide { scrollbar-width: none; }
+.scroll-hide::-webkit-scrollbar { display: none; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+@media print {
+    body * { visibility: hidden !important; }
+    .receipt-card, .receipt-card * { visibility: visible !important; }
+    .receipt-card {
+        position: fixed;
+        inset: 0;
+        margin: auto;
+        max-height: max-content;
+        color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    .receipt-actions { display: none !important; }
+}

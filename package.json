@@ -1,0 +1,39 @@
+{
+  "name": "rs-store-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/server.pg.js",
+    "start": "node src/server.pg.js",
+    "seed": "prisma db seed",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:deploy": "prisma migrate deploy",
+    "db:studio": "prisma studio",
+    "check": "prisma validate && node --check src/server.pg.js && node --check src/index.js && node --check src/db.js && node --check prisma/seed.js && npm --prefix frontend run lint && npm --prefix frontend run build",
+    "postinstall": "prisma generate",
+    "vercel-build": "npm --prefix frontend run build && node scripts/sync-frontend.js && prisma generate",
+    "storage:setup": "node scripts/setup-supabase.js"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.10.1",
+    "@prisma/client": "^7.10.1",
+    "@supabase/supabase-js": "^2.118.0",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.1",
+    "multer": "^2.0.2",
+    "pg": "^8.23.1"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "prisma": "^7.10.1"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "RS Store - متجر الخدمات الرقمية",
+  "short_name": "RS Store",
+  "description": "شحن الألعاب والتطبيقات والاشتراكات والخدمات الرقمية",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0c0a07",
+  "theme_color": "#d6a72f",
+  "categories": ["shopping", "finance", "utilities"],
+  "icons": [
+    { "src": "/assets/rs-logo.jpg", "sizes": "any", "type": "image/jpeg", "purpose": "any" },
+    { "src": "/assets/rs-logo.jpg", "sizes": "any", "type": "image/jpeg", "purpose": "maskable" }
+  ]
+}
