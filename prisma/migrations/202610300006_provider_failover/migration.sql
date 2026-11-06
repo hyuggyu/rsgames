@@ -1,0 +1,10 @@
+ALTER TABLE "ApiProvider" ADD COLUMN "priority" INTEGER NOT NULL DEFAULT 100;
+ALTER TABLE "ApiProvider" ADD COLUMN "maxRetries" INTEGER NOT NULL DEFAULT 2;
+ALTER TABLE "ApiProvider" ADD COLUMN "consecutiveFailures" INTEGER NOT NULL DEFAULT 0;
+ALTER TABLE "ApiProvider" ADD COLUMN "circuitOpenUntil" TIMESTAMP(3);
+ALTER TABLE "ApiProvider" ADD COLUMN "lastSuccessAt" TIMESTAMP(3);
+ALTER TABLE "ApiProvider" ADD COLUMN "lastFailureAt" TIMESTAMP(3);
+ALTER TABLE "ApiFulfillment" ADD COLUMN "failedProviderIds" TEXT[] NOT NULL DEFAULT ARRAY[]::TEXT[];
+ALTER TABLE "ApiFulfillment" ADD COLUMN "switchedCount" INTEGER NOT NULL DEFAULT 0;
+DROP INDEX IF EXISTS "ApiProvider_active_idx";
+CREATE INDEX "ApiProvider_active_priority_idx" ON "ApiProvider"("active", "priority");
